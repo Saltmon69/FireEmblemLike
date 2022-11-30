@@ -63,7 +63,7 @@ public class MapManager : MonoBehaviour
         var map = MapManager.Instance.map;
         List<OverlayTiles> neighbours = new List<OverlayTiles>();
 
-        Vector2Int locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.z, currentOverlayTile.gridLocation.z+1);
+        Vector2Int locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x, currentOverlayTile.gridLocation.y+1);
 
         if (map.ContainsKey(locationToCheck))
         {
@@ -71,7 +71,7 @@ public class MapManager : MonoBehaviour
                 neighbours.Add(map[locationToCheck]);
         }
         
-        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x, currentOverlayTile.gridLocation.z-1);
+        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x, currentOverlayTile.gridLocation.y-1);
 
         if (map.ContainsKey(locationToCheck))
         {
@@ -79,7 +79,7 @@ public class MapManager : MonoBehaviour
                 neighbours.Add(map[locationToCheck]);
         }
         
-        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x+1, currentOverlayTile.gridLocation.z);
+        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x+1, currentOverlayTile.gridLocation.y);
 
         if (map.ContainsKey(locationToCheck))
         {
@@ -87,7 +87,7 @@ public class MapManager : MonoBehaviour
                 neighbours.Add(map[locationToCheck]);
         }
         
-        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x-1, currentOverlayTile.gridLocation.z);
+        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x-1, currentOverlayTile.gridLocation.y);
 
         if (map.ContainsKey(locationToCheck))
         {
