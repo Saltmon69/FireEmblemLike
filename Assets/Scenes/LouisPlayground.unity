@@ -217,12 +217,14 @@ GameObject:
   m_Component:
   - component: {fileID: 229094433}
   - component: {fileID: 229094432}
+  - component: {fileID: 229094436}
+  - component: {fileID: 229094435}
   m_Layer: 0
   m_Name: Idle_State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &229094432
 MonoBehaviour:
@@ -236,7 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc3d684aff0c5b4290e088e4b8a735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStateEnter: []
+  OnStateEnter:
+  - {fileID: 229094436}
   OnStateExit: []
   OnStateUpdate: []
 --- !u!4 &229094433
@@ -254,6 +257,38 @@ Transform:
   m_Father: {fileID: 425237812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &229094435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229094431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f951415d33fae4cbba54500288bc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: IdleTestState
+  switchToStateA: {fileID: 425237813}
+--- !u!114 &229094436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229094431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8984afda389a94b48b9a3c0cbf794642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 'On State Machine '''' state: '''''
+  StateMachine: {fileID: 425237808}
+  TargetState: {fileID: 229094432}
+  IfCurrentState:
+  - {fileID: 229094435}
+  IfNotCurrentState: []
 --- !u!1 &425237806
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +302,7 @@ GameObject:
   - component: {fileID: 425237810}
   - component: {fileID: 425237809}
   - component: {fileID: 425237808}
-  - component: {fileID: 425237807}
+  - component: {fileID: 425237813}
   m_Layer: 0
   m_Name: Enemy_Test
   m_TagString: Untagged
@@ -275,21 +310,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &425237807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425237806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 313f9593d35b2c740928abbd82069aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Set State Idle_State
-  StateMachine: {fileID: 425237808}
-  m_State: Idle_State
 --- !u!114 &425237808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +325,7 @@ MonoBehaviour:
   DefaultState: Idle_State
   States:
   - {fileID: 229094432}
+  - {fileID: 1694745222}
 --- !u!65 &425237809
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -381,9 +402,25 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 229094433}
+  - {fileID: 1694745225}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425237813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425237806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313f9593d35b2c740928abbd82069aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: SetStateAction
+  StateMachine: {fileID: 425237808}
+  m_State: Chase_State
 --- !u!1 &737508367
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,3 +536,85 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &1694745221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694745225}
+  - component: {fileID: 1694745222}
+  - component: {fileID: 1694745223}
+  - component: {fileID: 1694745224}
+  m_Layer: 0
+  m_Name: Chase_State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1694745222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694745221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc3d684aff0c5b4290e088e4b8a735e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateEnter:
+  - {fileID: 1694745223}
+  OnStateExit:
+  - {fileID: 1694745224}
+  OnStateUpdate: []
+--- !u!114 &1694745223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694745221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8984afda389a94b48b9a3c0cbf794642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 'On State Machine '''' state: '''''
+  StateMachine: {fileID: 425237808}
+  TargetState: {fileID: 1694745222}
+  IfCurrentState:
+  - {fileID: 1694745224}
+  IfNotCurrentState: []
+--- !u!114 &1694745224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694745221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfb46989961691459965929f4c3a97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: ChaseTestState
+--- !u!4 &1694745225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694745221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 425237812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
