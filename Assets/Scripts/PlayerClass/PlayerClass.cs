@@ -16,20 +16,25 @@ public abstract class PlayerClass : MonoBehaviour
     [HideInInspector] public float classAttack;
     [HideInInspector] public float defense;
     [HideInInspector] public float magie;
-    [HideInInspector] public float esquive;
-    [HideInInspector] public int deplacement;
+    [HideInInspector] public float dodge;
+    [HideInInspector] public int movement;
     
     //Variables compétences
 
-    public SkillClass baseAttack;
-    public SkillClass firstSkill;
-    public SkillClass secondSkill;
+    public List<SkillClass> skillList = new List<SkillClass>();
+
     
     //Variables états
 
     public bool debuff;
     public bool enemyInRange;
     public bool isEnemy;
+    public bool hasMoved;
+    public bool hasAttacked;
+    
+    public CharacterTileInfo _characterTileInfo;
+    
+    
     
     /*
      * if (enemyInRange && isEnemy)
@@ -61,5 +66,9 @@ public abstract class PlayerClass : MonoBehaviour
 
         return roundedHealValue;
     }
+    
+    public abstract void Movement();
+    
+    
 
 }

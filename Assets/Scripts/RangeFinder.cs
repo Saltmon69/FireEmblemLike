@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class RangeFinder
 {
+    public List<OverlayTiles> inRangeTiles = new List<OverlayTiles>();
     public List<OverlayTiles> GetTilesInRange(OverlayTiles startingTile, int range)
     {
-        var inRangeTiles = new List<OverlayTiles>();
+        
         int stepCount = 0;
         
         inRangeTiles.Add(startingTile);
