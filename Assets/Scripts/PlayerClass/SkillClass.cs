@@ -16,7 +16,23 @@ public abstract class SkillClass : MonoBehaviour
     public RangeFinder _rangeFinder;
     public PlayerClass playerPos;
 
-    public abstract void TilesInRange();
+    public void TilesInRange(int range)
+    {
+        List<OverlayTiles> tilesInRangeList = _rangeFinder.GetTilesInRange(playerPos._characterTileInfo.activeTile, range);
+
+        foreach (OverlayTiles tiles in tilesInRangeList)
+        {
+            if (tiles.characterOnTile == null)
+            {
+                break;
+            }
+
+            if (tiles.characterOnTile)
+            {
+                enemyList.Add(tiles.characterOnTile.GetComponent<PlayerClass>());
+            }
+        }
+    }
     
 
 

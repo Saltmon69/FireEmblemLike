@@ -11,20 +11,12 @@ public class EnemyBaseAttack : SkillClass
         PP = 999;
         skillAttack = 0.5f;
         critChance = 2;
-
-
-    
-    
+        
+        TilesInRange(2);
     }
-    
-    
 
-    public override void TilesInRange()
-    {
-        _rangeFinder.GetTilesInRange(playerPos._characterTileInfo.activeTile, 2);
-        
-        
-        
-    }
+
+    
+    
     
 }
