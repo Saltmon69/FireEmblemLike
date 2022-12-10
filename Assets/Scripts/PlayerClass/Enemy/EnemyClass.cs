@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class EnemyClass : PlayerClass
 {
-    public PlayerClass playerToFocus;
-    public SkillClass attack;
+    
+    
     private void Start()
     {
         // Texts
@@ -25,17 +25,14 @@ public class EnemyClass : PlayerClass
 
         attack = skillList[0];
 
-        playerToFocus = attack.enemyList[UnityEngine.Random.Range(0, attack.enemyList.Count + 1)];
+        //playerToFocus = attack.enemyList[UnityEngine.Random.Range(0, attack.enemyList.Count -1)];
 
 
     }
 
 
     
-    public override void Movement()
-    {
-        
-    }
+
     
     private void Attack()
     {
