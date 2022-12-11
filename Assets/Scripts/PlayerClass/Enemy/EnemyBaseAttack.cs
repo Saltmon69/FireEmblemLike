@@ -11,8 +11,9 @@ public class EnemyBaseAttack : SkillClass
         PP = 999;
         skillAttack = 0.5f;
         critChance = 2;
+
+        TilesInAttackRange(2);
         
-        TilesInRange(2);
     }
 
 

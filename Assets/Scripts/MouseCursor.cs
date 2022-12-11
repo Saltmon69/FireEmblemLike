@@ -160,20 +160,20 @@ public class MouseCursor : MonoBehaviour
         return null;
     }
 
-    // private void MoveAlongPath()
-    // {
-    //     var step = speed * Time.deltaTime;
-    //
-    //     var yIndex = path[0].transform.position.y;
-    //     character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
-    //     character.transform.position =
-    //         new Vector3(character.transform.position.x, yIndex, character.transform.position.y);
-    //     if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
-    //     {
-    //         PositionCharacterOnTile(path[0]);
-    //         path.RemoveAt(0);
-    //     }
-    // }
+     private void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
+     {
+         var step = speed * Time.deltaTime;
+    
+         var yIndex = path[0].transform.position.y;
+         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
+         character.transform.position =
+            new Vector3(character.transform.position.x, yIndex, character.transform.position.y);
+         if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
+         {
+             PositionCharacterOnTile(path[0], characterSelected);
+             path.RemoveAt(0);
+         }
+     }
 
     private void PositionCharacterOnTile(OverlayTiles tile, CharacterTileInfo characterSelected)
     {

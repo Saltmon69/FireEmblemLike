@@ -32,15 +32,17 @@ public abstract class PlayerClass : MonoBehaviour
     public bool hasMoved;
     public bool hasAttacked;
     
+    //Variables range
+    
     public CharacterTileInfo _characterTileInfo;
+    public RangeFinder _RangeFinder;
+    public PathFinder _PathFinder;
+    public PlayerClass playerToFocus;
+    public SkillClass attack;
     
     
     
-    /*
-     * if (enemyInRange && isEnemy)
-     *    SkillClass.enemyList.add(ce qui permet de trouver les ennemis dans la range d'attaque)
-     * 
-     */
+
     
 
     public int TakeDamage(SkillClass skillUsed)
@@ -66,9 +68,14 @@ public abstract class PlayerClass : MonoBehaviour
 
         return roundedHealValue;
     }
+
+    public void Movement()
+    {
+        List<OverlayTiles> tilesRange = _RangeFinder.GetTilesInRange(_characterTileInfo.activeTile, movement);
+        //List<OverlayTiles> pathfindingTiles = _PathFinder.FindPath()
+    }
     
-    public abstract void Movement();
-    
+
     
 
 }
