@@ -62,7 +62,6 @@ public class MapManager : MonoBehaviour
     {
         var map = MapManager.Instance.map;
         List<OverlayTiles> neighbours = new List<OverlayTiles>();
-
         Vector2Int locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x, currentOverlayTile.gridLocation.y+1);
 
         if (map.ContainsKey(locationToCheck))

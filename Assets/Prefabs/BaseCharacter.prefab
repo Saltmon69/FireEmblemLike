@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 37073276279268666}
   - component: {fileID: 7038523171130861916}
   - component: {fileID: 1299979246209246870}
+  - component: {fileID: 694536996163924352}
+  - component: {fileID: 5339611590542665759}
   m_Layer: 0
   m_Name: BaseCharacter
   m_TagString: Drag
@@ -112,3 +114,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeTile: {fileID: 0}
+--- !u!114 &694536996163924352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038523171130861918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62baf741c73bbf64aa2ce1e563d572ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: Hitokiri
+  classDescription: "On connait tr\xE8s peu de chose sur Hitokiri, hormis qu'il est
+    connu pour l'assassinat d'un Shogun Corrompu."
+  life: 0
+  classAttack: 0
+  defense: 0
+  magie: 0
+  dodge: 0
+  movement: 0
+  skillList:
+  - {fileID: 5339611590542665759}
+  debuff: 0
+  enemyInRange: 0
+  isEnemy: 0
+  hasMoved: 0
+  hasAttacked: 0
+  _characterTileInfo: {fileID: 1299979246209246870}
+--- !u!114 &5339611590542665759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038523171130861918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770d7da9de5261c48aee586e215a8707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PP: 999
+  skillAttack: 20
+  critChance: 2
+  attackRange: 2
+  enemyList: []
+  playerPos: {fileID: 694536996163924352}

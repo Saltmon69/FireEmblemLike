@@ -8,7 +8,7 @@ public class RangeFinder
     public List<OverlayTiles> inRangeTiles = new List<OverlayTiles>();
     public List<OverlayTiles> GetTilesInRange(OverlayTiles startingTile, int range)
     {
-        
+        inRangeTiles.Clear();
         int stepCount = 0;
         
         inRangeTiles.Add(startingTile);

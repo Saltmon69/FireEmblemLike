@@ -98,6 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20316fff418aa743a391a8a2c96221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  G: 0
+  H: 0
+  isBlocked: 0
+  previous: {fileID: 0}
+  gridLocation: {x: 0, y: 0, z: 0}
+  characterOnTile: {fileID: 0}
 --- !u!65 &3862349042905816753
 BoxCollider:
   m_ObjectHideFlags: 0
