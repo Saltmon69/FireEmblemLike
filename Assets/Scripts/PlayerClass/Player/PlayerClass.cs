@@ -72,7 +72,8 @@ public abstract class PlayerClass : MonoBehaviour
     public void Movement()
     {
         List<OverlayTiles> tilesRange = _RangeFinder.GetTilesInRange(_characterTileInfo.activeTile, movement);
-        //List<OverlayTiles> pathfindingTiles = _PathFinder.FindPath()
+        List<OverlayTiles> pathfindingTiles =
+            _PathFinder.FindPath(_characterTileInfo.activeTile, playerToFocus._characterTileInfo.activeTile);
     }
     
 
