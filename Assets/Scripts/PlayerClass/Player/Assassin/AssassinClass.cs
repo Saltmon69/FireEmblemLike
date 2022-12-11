@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class AssassinClass : PlayerClass
 {
-    public override void Movement()
-    {
-        
-    }
 }

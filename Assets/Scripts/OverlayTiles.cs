@@ -31,4 +31,14 @@ public class OverlayTiles : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
     }
+
+    public void TargetTile()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+    }
+
+    public void SkillTile()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0.25f, 1, 1);
+    }
 }

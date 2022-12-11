@@ -10,7 +10,6 @@ public class MouseCursor : MonoBehaviour
     public float speed;
     [SerializeField] private LayerMask _layer;
     public GameObject characterPrefab;
-    private CharacterTileInfo character;
     private GameObject takedCharacter; // Character choiced by left click
     private GameObject selectedCharacter; // Character choiced by right click
     private OverlayTiles previousTile;
@@ -39,39 +38,77 @@ public class MouseCursor : MonoBehaviour
             transform.position = hoveredTile.transform.position;
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = hoveredTile.gameObject.GetComponent<SpriteRenderer>().sortingOrder+1;
             
+            
+            
             if (Input.GetMouseButtonDown(0))
             {
-
-                if (character == null)
+               
+                // If Player using skill
+                if(hoveredTile.characterOnTile != null &&  hoveredTile.characterOnTile.GetComponent<PlayerClass>().isEnemy)
                 {
-                    character = Instantiate(characterPrefab).GetComponent<CharacterTileInfo>();
-                    PositionCharacterOnTile(hoveredTile, character);
-                    
-                }
-                else
-                {
-
-                    if (character.activeTile == hoveredTile)
+                    if (selectedSkill != null)
                     {
-                        print("character clicked");
-                        takedCharacter = hoveredTile.characterOnTile;
-                        previousTile = hoveredTile;
-                        hoveredTile.characterOnTile = null;
-                        GetInRangeTiles(3);
-                        character.activeTile = null;
-                        
+                        HidePreviousTiles();
+                        hoveredTile.characterOnTile.GetComponent<PlayerClass>().TakeDamage(selectedSkill);
+                        print( hoveredTile.characterOnTile.GetComponent<PlayerClass>().life);
+                        selectedCharacter = null;
+                        selectedSkill = null;
                     }
                     else
                     {
-                        // Check if tile is in range
-                        if(!CheckInRangeTiles(hoveredTile,previousTile, 3)) return;
+                        return;
+                    }
+                    return;   
+                }
+                
+                
+                // Moving Character Part ↓
+                
+                if (takedCharacter == null && hoveredTile.characterOnTile != null)
+                {
+                    print("character clicked");
+                    takedCharacter = hoveredTile.characterOnTile;
+                    previousTile = hoveredTile;
+                    hoveredTile.characterOnTile = null;
+                    GetInRangeTiles(takedCharacter.GetComponent<CharacterTileInfo>(), 3);
+                    takedCharacter.GetComponent<CharacterTileInfo>().activeTile = null;
+                }
+                else
+                {
+                    // Check if tile is in range
+                    if(!CheckInRangeTiles(hoveredTile,previousTile, 3)) return;
                         
-                        //Place Selected Character on clicked tile
-                        if (hoveredTile.characterOnTile == null && !hoveredTile.isBlocked && takedCharacter != null)
+                    // Place Selected Character on clicked tile
+                    if (hoveredTile.characterOnTile == null && !hoveredTile.isBlocked && takedCharacter != null)
+                    {
+                        PositionCharacterOnTile(hoveredTile, takedCharacter.GetComponent<CharacterTileInfo>());
+                        HidePreviousTiles();
+                        takedCharacter = null;
+                    }
+                        
+                }
+
+            }
+            else
+            {
+                
+                if (Input.GetMouseButtonDown(1))
+                {
+                    if(hoveredTile.characterOnTile != null && !hoveredTile.characterOnTile.GetComponent<PlayerClass>().isEnemy)  // <== Check si y'a bien un personnage et si il est joueur
+                    {
+                        
+                        if(selectedSkill == null) // <== Check si aucun skill n'est selectionné
                         {
-                            PositionCharacterOnTile(hoveredTile, takedCharacter.GetComponent<CharacterTileInfo>());
+                            selectedCharacter = hoveredTile.characterOnTile;
+                            selectedSkill = selectedCharacter.GetComponent<PlayerClass>().skillList[0];
+                            print(selectedSkill);
+                            GetInRangeTiles(selectedCharacter.GetComponent<CharacterTileInfo>(), selectedSkill.attackRange, true);
+                        }
+                        else // <== Si oui, désactive le skill actuel
+                        {
+                            selectedCharacter = null;
+                            selectedSkill = null;
                             HidePreviousTiles();
-                            takedCharacter = null;
                         }
                         
                     }
@@ -79,27 +116,7 @@ public class MouseCursor : MonoBehaviour
                 }
                 
             }
-            else
-            {
-                if (Input.GetMouseButtonDown(1))
-                {
-                    
-                    if(selectedSkill == null)
-                    {
-                        selectedCharacter = hoveredTile.characterOnTile;
-                        selectedSkill = selectedCharacter.GetComponent<PlayerClass>().skillList[0];
-                        print(selectedSkill);
-                        GetInRangeTiles(selectedSkill.attackRange);
-                    }
-                    else
-                    {
-                        selectedCharacter = null;
-                        selectedSkill = null;
-                        HidePreviousTiles();
-                    }
-                    
-                }
-            }
+            
         }
         
         // Selected Character follow mouse cursor
@@ -115,7 +132,7 @@ public class MouseCursor : MonoBehaviour
 
     }
 
-    public void GetInRangeTiles(int range)
+    public void GetInRangeTiles(CharacterTileInfo character, int range, bool inSkill = false)
     {
         HidePreviousTiles();
         
@@ -123,7 +140,22 @@ public class MouseCursor : MonoBehaviour
 
         foreach (var item in inRangeTiles)
         {
-            item.ShowTile();
+            if (inSkill)
+            {
+                if (item.characterOnTile != null && item.characterOnTile.GetComponent<PlayerClass>().isEnemy)
+                {
+                    item.TargetTile();
+                }
+                else
+                {
+                    item.SkillTile();
+                }
+            }
+            else
+            {
+                item.ShowTile();
+            }
+            
         }
     }
     
@@ -160,29 +192,27 @@ public class MouseCursor : MonoBehaviour
         return null;
     }
 
-     private void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
-     {
-         var step = speed * Time.deltaTime;
-    
-         var yIndex = path[0].transform.position.y;
-         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
-         character.transform.position =
-            new Vector3(character.transform.position.x, yIndex, character.transform.position.y);
-         if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
-         {
-             PositionCharacterOnTile(path[0], characterSelected);
-             path.RemoveAt(0);
-         }
-     }
+     // private void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
+     // {
+     //     var step = speed * Time.deltaTime;
+     //
+     //     var yIndex = path[0].transform.position.y;
+     //     character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
+     //     character.transform.position =
+     //        new Vector3(character.transform.position.x, yIndex, character.transform.position.y);
+     //     if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
+     //     {
+     //         PositionCharacterOnTile(path[0], characterSelected);
+     //         path.RemoveAt(0);
+     //     }
+     // }
 
     private void PositionCharacterOnTile(OverlayTiles tile, CharacterTileInfo characterSelected)
     {
         print(tile.transform.position);
-        characterSelected.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+0.5f, tile.transform.position.z);
+        characterSelected.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+1f, tile.transform.position.z);
         characterSelected.GetComponentInChildren<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
         characterSelected.activeTile = tile;
         tile.characterOnTile = characterSelected.gameObject;
-        
-        character = characterSelected;
     }
 }
