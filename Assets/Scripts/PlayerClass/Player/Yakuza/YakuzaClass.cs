@@ -27,4 +27,6 @@ public class YakuzaClass : PlayerClass
         if (!isEnemy)
             playerToFocus = null;
     }
+    
+    
 }

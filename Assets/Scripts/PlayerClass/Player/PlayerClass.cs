@@ -74,6 +74,23 @@ public abstract class PlayerClass : MonoBehaviour
         List<OverlayTiles> tilesRange = _RangeFinder.GetTilesInRange(_characterTileInfo.activeTile, movement);
         List<OverlayTiles> pathfindingTiles =
             _PathFinder.FindPath(_characterTileInfo.activeTile, playerToFocus._characterTileInfo.activeTile);
+        List<OverlayTiles> pathInRange = new List<OverlayTiles>();
+
+
+        foreach (OverlayTiles tilesInGloblalPath in pathfindingTiles)
+        {
+            foreach (OverlayTiles tilesInRange in tilesRange)
+            {
+                if (tilesInRange == tilesInGloblalPath)
+                {
+                    pathInRange.Add(tilesInRange);
+                }
+                else
+                {
+                    tilesRange.Remove(tilesInRange);
+                }
+            }
+        }
     }
     
 
