@@ -47,11 +47,12 @@ public class MouseCursor : MonoBehaviour
                 // If Player using skill
                 if(hoveredTile.characterOnTile != null &&  hoveredTile.characterOnTile.GetComponent<PlayerClass>().isEnemy)
                 {
+                    selectedEnemy = hoveredTile.characterOnTile;
                     if (selectedSkill != null)
                     {
                         HidePreviousTiles();
-                        hoveredTile.characterOnTile.GetComponent<PlayerClass>().TakeDamage(selectedSkill);
-                        print( hoveredTile.characterOnTile.GetComponent<PlayerClass>().life);
+                        selectedEnemy.GetComponent<PlayerClass>().TakeDamage(selectedSkill);
+                        print( selectedEnemy.GetComponent<PlayerClass>().life);
                         selectedCharacter = null;
                         selectedSkill = null;
                     }
