@@ -19,8 +19,7 @@ public class MouseCursor : MonoBehaviour
     private PathFinder _pathfinder;
     private RangeFinder _rangefinder;
 
-    public SkillClass selectedSkill;
-    public GameObject selectedEnemy;
+    private SkillClass selectedSkill;
 
     private void Start()
     {
