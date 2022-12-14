@@ -23,8 +23,8 @@ public abstract class PlayerClass : MonoBehaviour
 
     public List<SkillClass> skillList = new List<SkillClass>();
     public List<PlayerClass> entityInRangeList = new List<PlayerClass>();
-
     
+
     //Variables états
 
     public bool debuff;
@@ -54,6 +54,21 @@ public abstract class PlayerClass : MonoBehaviour
         entitySelected.defense = entitySelected.debuff ? entitySelected.defense -= entitySelected.defense * 0.6f : entitySelected.defense;
         
         var damage = skillUsed.skillAttack * crit - entitySelected.defense * 0.5f;
+        var roundedDamage = Mathf.RoundToInt(damage);
+
+        entitySelected.life -= roundedDamage;
+        
+        return roundedDamage;
+    }
+    
+    public int TakeDamageForRicochet(SkillClass skillUsed, PlayerClass entitySelected)
+    {
+        var rndmValue = UnityEngine.Random.Range(0, 6);
+        var crit = rndmValue<skillUsed.critChance ? 1.5f : 1f; //var = condition?sitrue:sifalse; --> if concentré
+        entitySelected.defense = entitySelected.debuff ? entitySelected.defense -= entitySelected.defense * 0.6f : entitySelected.defense;
+        
+        var damage = skillUsed.skillAttack * crit - entitySelected.defense * 0.5f;
+        damage = damage / 2;
         var roundedDamage = Mathf.RoundToInt(damage);
 
         entitySelected.life -= roundedDamage;
