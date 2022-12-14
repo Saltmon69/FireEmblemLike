@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class BaseAttack : SkillClass
 {
-    
+    public override void Action()
+    {
+
+    }
 }

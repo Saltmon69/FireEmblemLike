@@ -14,8 +14,7 @@ public class YakuzaTelurique : SkillClass
         playerPos = GetComponent<PlayerClass>();
         _mouseCursor = GetComponent<MouseCursor>();
     }
-    
-    public void YakuzaTeluriqueFonc()
+    public override void Action()
     {
         playerPos.TakeDamage(GetComponent<SkillClass>(), _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         playerPos.hasAttacked = true;

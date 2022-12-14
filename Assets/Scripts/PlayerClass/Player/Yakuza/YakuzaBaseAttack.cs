@@ -15,7 +15,7 @@ public class YakuzaBaseAttack : SkillClass
         _mouseCursor = GetComponent<MouseCursor>();
     }
     
-    public void YakuzaBaseFonc()
+    public override void Action()
     {
         playerPos.TakeDamage(GetComponent<SkillClass>(), _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         playerPos.hasAttacked = true;

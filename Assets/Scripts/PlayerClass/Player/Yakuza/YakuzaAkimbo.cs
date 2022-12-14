@@ -16,7 +16,7 @@ public class YakuzaAkimbo : SkillClass
         
     }
 
-    public void YakuzaAkimboFonc()
+    public override void Action()
     {
         playerPos.TakeDamage(GetComponent<SkillClass>(), _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         playerPos.hasAttacked = true;

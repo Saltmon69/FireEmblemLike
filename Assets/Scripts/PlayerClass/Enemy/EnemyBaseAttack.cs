@@ -12,8 +12,11 @@ public class EnemyBaseAttack : SkillClass
         skillAttack = 0.5f;
         critChance = 2;
 
-        
-        
+    }
+    
+    public override void Action()
+    {
+
     }
 
 
