@@ -129,13 +129,21 @@ public class MouseCursor : MonoBehaviour
     public void GetInRangeTiles(CharacterTileInfo character, int range, bool inSkill = false)
     {
         HidePreviousTiles();
-        
-        inRangeTiles = _rangefinder.GetTilesInRange(character.activeTile, range);
+
+        if (selectedSkill.attackRange != 8)
+        {
+            inRangeTiles = _rangefinder.GetTilesInRange(character.activeTile, range);
+        }
+        else
+        {
+            inRangeTiles = _rangefinder.GetTilesInLine(character.activeTile, 8);
+        }
 
         foreach (var item in inRangeTiles)
         {
             if (inSkill)
             {
+                
                 if (item.characterOnTile != null && item.characterOnTile.GetComponent<PlayerClass>().isEnemy)
                 {
                     item.TargetTile();
