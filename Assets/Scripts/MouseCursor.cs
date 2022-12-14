@@ -19,6 +19,8 @@ public class MouseCursor : MonoBehaviour
     private PathFinder _pathfinder;
     private RangeFinder _rangefinder;
 
+
+    private bool selectingAction = false;
     public SkillClass selectedSkill;
     public GameObject selectedEnemy;
 
@@ -36,14 +38,14 @@ public class MouseCursor : MonoBehaviour
         if (focusedTileHit.HasValue)
         {
             OverlayTiles hoveredTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTiles>();
-            transform.position = hoveredTile.transform.position;
+            if(!selectingAction) transform.position = hoveredTile.transform.position;
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = hoveredTile.gameObject.GetComponent<SpriteRenderer>().sortingOrder+1;
-            
-            
-            
+
             if (Input.GetMouseButtonDown(0))
             {
                
+                if(selectingAction) return;
+                
                 // If Player using skill
                 if(hoveredTile.characterOnTile != null &&  hoveredTile.characterOnTile.GetComponent<PlayerClass>().isEnemy)
                 {
@@ -98,21 +100,11 @@ public class MouseCursor : MonoBehaviour
                 {
                     if(hoveredTile.characterOnTile != null && !hoveredTile.characterOnTile.GetComponent<PlayerClass>().isEnemy)  // <== Check si y'a bien un personnage et si il est joueur
                     {
-                        
-                        if(selectedSkill == null) // <== Check si aucun skill n'est selectionné
-                        {
-                            selectedCharacter = hoveredTile.characterOnTile;
-                            selectedSkill = selectedCharacter.GetComponent<PlayerClass>().skillList[0];
-                            print(selectedSkill);
-                            GetInRangeTiles(selectedCharacter.GetComponent<CharacterTileInfo>(), selectedSkill.attackRange, true);
-                        }
-                        else // <== Si oui, désactive le skill actuel
-                        {
-                            selectedCharacter = null;
-                            selectedSkill = null;
-                            HidePreviousTiles();
-                        }
-                        
+                        selectedCharacter = null;
+                        selectedSkill = null;
+                        hoveredTile.characterOnTile.transform.GetChild(0).gameObject.SetActive(true);
+                        selectingAction = true;
+                        selectedCharacter = hoveredTile.characterOnTile;
                     }
                     
                 }
@@ -194,7 +186,7 @@ public class MouseCursor : MonoBehaviour
         return null;
     }
 
-      public void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
+    public void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
       {
           var step = speed * Time.deltaTime;
      
@@ -216,5 +208,21 @@ public class MouseCursor : MonoBehaviour
         characterSelected.GetComponentInChildren<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
         characterSelected.activeTile = tile;
         tile.characterOnTile = characterSelected.gameObject;
+    }
+
+    public void SelectAction(SkillClass action)
+    {
+        HidePreviousTiles();
+        selectedSkill = action;
+        print(selectedSkill);
+        GetInRangeTiles(selectedCharacter.GetComponent<CharacterTileInfo>(), selectedSkill.attackRange, true);
+        selectedCharacter.transform.GetChild(0).gameObject.SetActive(false);
+        selectingAction = false;
+    }
+
+    public void QuitSelectAction()
+    {
+        selectedCharacter.transform.GetChild(0).gameObject.SetActive(false);
+        selectingAction = false;
     }
 }
