@@ -37,6 +37,7 @@ public abstract class PlayerClass : MonoBehaviour
     public CharacterTileInfo _characterTileInfo;
     public RangeFinder _RangeFinder;
     public PathFinder _PathFinder;
+    public GameManager _GameManager;
     
     
     

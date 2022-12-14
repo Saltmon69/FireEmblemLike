@@ -40,7 +40,10 @@ public class EnemyClass : PlayerClass
         attack = skillList[0];
         
         playerToFocus = entityInRangeList[UnityEngine.Random.Range(0, entityInRangeList.Count -1)];
-
+        
+        //States
+        hasAttacked = false;
+        hasMoved = false;
 
     }
 
@@ -64,9 +67,15 @@ public class EnemyClass : PlayerClass
             {
                 Attack();
             }
+
+            if (!playerInRange && !hasMoved)
+            {
+                hasAttacked = true;
+            }
         }
 
         if (hasAttacked)
+            hasMoved = true;
             gameManager.enemyPlayedCounter++;
         
         
@@ -125,6 +134,11 @@ public class EnemyClass : PlayerClass
                 {
                     playerInRange = true;
                     playersInRange.Add(playerPos);
+                    break;
+                }
+                else
+                {
+                    playerInRange = false;
                 }
             }
         }

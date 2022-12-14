@@ -24,8 +24,12 @@ public class YakuzaClass : PlayerClass
         movement = 6;
         isEnemy = false;
 
-
+        //Scripts
+        _GameManager= GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
-    
-    
+
+    private void Update()
+    {
+        
+    }
 }
