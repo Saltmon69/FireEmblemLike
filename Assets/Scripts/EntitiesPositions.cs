@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/Entities Postitions")]
 public class EntitiesPositions : ScriptableObject
 {
-    public List<OverlayTiles> playerPositions = new List<OverlayTiles>();
+    public List<CharacterTileInfo> playerPositions = new List<CharacterTileInfo>();
 }

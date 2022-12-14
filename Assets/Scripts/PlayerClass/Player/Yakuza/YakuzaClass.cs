@@ -24,8 +24,7 @@ public class YakuzaClass : PlayerClass
         movement = 6;
         isEnemy = false;
 
-        if (!isEnemy)
-            playerToFocus = null;
+
     }
     
     

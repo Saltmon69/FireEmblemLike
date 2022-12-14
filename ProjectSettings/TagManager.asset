@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Drag
   - Enemy
+  - GameManager
   layers:
   - Default
   - TransparentFX

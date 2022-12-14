@@ -22,12 +22,12 @@ public abstract class PlayerClass : MonoBehaviour
     //Variables compétences
 
     public List<SkillClass> skillList = new List<SkillClass>();
+    public List<PlayerClass> entityInRangeList = new List<PlayerClass>();
 
     
     //Variables états
 
     public bool debuff;
-    public bool enemyInRange;
     public bool isEnemy;
     public bool hasMoved;
     public bool hasAttacked;
@@ -37,24 +37,25 @@ public abstract class PlayerClass : MonoBehaviour
     public CharacterTileInfo _characterTileInfo;
     public RangeFinder _RangeFinder;
     public PathFinder _PathFinder;
-    public PlayerClass playerToFocus;
-    public SkillClass attack;
+    
+    
+    
     
     
     
 
     
 
-    public int TakeDamage(SkillClass skillUsed)
+    public int TakeDamage(SkillClass skillUsed, PlayerClass entitySelected)
     {
         var rndmValue = UnityEngine.Random.Range(0, 6);
         var crit = rndmValue<skillUsed.critChance ? 1.5f : 1f; //var = condition?sitrue:sifalse; --> if concentré
-        defense = debuff ? defense -= defense * 0.6f : defense;
+        entitySelected.defense = entitySelected.debuff ? entitySelected.defense -= entitySelected.defense * 0.6f : entitySelected.defense;
         
-        var damage = skillUsed.skillAttack * crit - defense * 0.5f;
+        var damage = skillUsed.skillAttack * crit - entitySelected.defense * 0.5f;
         var roundedDamage = Mathf.RoundToInt(damage);
 
-        life -= roundedDamage;
+        entitySelected.life -= roundedDamage;
         
         return roundedDamage;
     }
@@ -68,32 +69,5 @@ public abstract class PlayerClass : MonoBehaviour
 
         return roundedHealValue;
     }
-
-    public void Movement()
-    {
-        List<OverlayTiles> tilesRange = _RangeFinder.GetTilesInRange(_characterTileInfo.activeTile, movement);
-        List<OverlayTiles> pathfindingTiles =
-            _PathFinder.FindPath(_characterTileInfo.activeTile, playerToFocus._characterTileInfo.activeTile);
-        List<OverlayTiles> pathInRange = new List<OverlayTiles>();
-
-
-        foreach (OverlayTiles tilesInGloblalPath in pathfindingTiles)
-        {
-            foreach (OverlayTiles tilesInRange in tilesRange)
-            {
-                if (tilesInRange == tilesInGloblalPath)
-                {
-                    pathInRange.Add(tilesInRange);
-                }
-                else
-                {
-                    tilesRange.Remove(tilesInRange);
-                }
-            }
-        }
-    }
-    
-
-    
 
 }

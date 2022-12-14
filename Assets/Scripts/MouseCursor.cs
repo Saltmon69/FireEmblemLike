@@ -51,7 +51,7 @@ public class MouseCursor : MonoBehaviour
                     if (selectedSkill != null)
                     {
                         HidePreviousTiles();
-                        selectedEnemy.GetComponent<PlayerClass>().TakeDamage(selectedSkill);
+                        selectedEnemy.GetComponent<PlayerClass>().TakeDamage(selectedSkill, selectedCharacter.GetComponent<PlayerClass>());
                         print( selectedEnemy.GetComponent<PlayerClass>().life);
                         selectedCharacter = null;
                         selectedSkill = null;
@@ -194,20 +194,20 @@ public class MouseCursor : MonoBehaviour
         return null;
     }
 
-     // private void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
-     // {
-     //     var step = speed * Time.deltaTime;
-     //
-     //     var yIndex = path[0].transform.position.y;
-     //     character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
-     //     character.transform.position =
-     //        new Vector3(character.transform.position.x, yIndex, character.transform.position.y);
-     //     if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
-     //     {
-     //         PositionCharacterOnTile(path[0], characterSelected);
-     //         path.RemoveAt(0);
-     //     }
-     // }
+      public void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
+      {
+          var step = speed * Time.deltaTime;
+     
+          var yIndex = path[0].transform.position.y;
+          characterSelected.transform.position = Vector2.MoveTowards(characterSelected.transform.position, path[0].transform.position, step);
+          characterSelected.transform.position =
+             new Vector3(characterSelected.transform.position.x, yIndex, characterSelected.transform.position.y);
+          if (Vector2.Distance(characterSelected.transform.position, path[0].transform.position) < 0.0001f)
+          {
+              PositionCharacterOnTile(path[0], characterSelected);
+              path.RemoveAt(0);
+          }
+     }
 
     private void PositionCharacterOnTile(OverlayTiles tile, CharacterTileInfo characterSelected)
     {
