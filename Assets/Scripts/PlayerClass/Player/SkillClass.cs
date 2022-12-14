@@ -15,6 +15,13 @@ public abstract class SkillClass : MonoBehaviour
     // Range et détection
     
     public PlayerClass playerPos;
+<<<<<<< Updated upstream
+=======
+    public MouseCursor _mouseCursor;
+
+
+
+>>>>>>> Stashed changes
 
     
 

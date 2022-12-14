@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -424,6 +424,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 694536996163924352, guid: e2227f1e2a02ae94792090e89fb78d9a,
+        type: 3}
+      propertyPath: _GameManager
+      value: 
+      objectReference: {fileID: 771347666}
     - target: {fileID: 1110661720530185009, guid: e2227f1e2a02ae94792090e89fb78d9a,
         type: 3}
       propertyPath: m_IsActive
@@ -611,6 +616,55 @@ PrefabInstance:
       objectReference: {fileID: 330585545}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2227f1e2a02ae94792090e89fb78d9a, type: 3}
+--- !u!1 &771347665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771347667}
+  - component: {fileID: 771347666}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &771347666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771347665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d049047e7871e0a4ebd8ea253b124967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTurn: 0
+  enemyTurn: 0
+  enemyList: []
+  enemyPlayedCounter: 0
+  playerPlayedCounter: 0
+--- !u!4 &771347667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771347665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.840326, y: 10.042248, z: 7.967577}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142374785
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,8 +923,25 @@ MonoBehaviour:
   PP: 15
   skillAttack: 9
   critChance: 0
+<<<<<<< Updated upstream
   attackRange: 8
   playerPos: {fileID: 0}
+=======
+  attackRange: 1
+  playerPos: {fileID: 1744288126}
+--- !u!114 &1744288126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 694536996163924352, guid: e2227f1e2a02ae94792090e89fb78d9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 737456307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744288118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62baf741c73bbf64aa2ce1e563d572ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &1952486633
 GameObject:
   m_ObjectHideFlags: 0
