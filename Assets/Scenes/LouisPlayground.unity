@@ -1035,6 +1035,11 @@ GameObject:
   m_Component:
   - component: {fileID: 166669074}
   - component: {fileID: 166669073}
+  - component: {fileID: 166669079}
+  - component: {fileID: 166669078}
+  - component: {fileID: 166669077}
+  - component: {fileID: 166669076}
+  - component: {fileID: 166669075}
   m_Layer: 0
   m_Name: Yakuza
   m_TagString: Player
@@ -1109,6 +1114,99 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &166669075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166669072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a4004859c91dc4fa5ca7edeb6c42ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PP: 0
+  skillAttack: 0
+  critChance: 0
+  attackRange: 0
+  playerPos: {fileID: 166669079}
+--- !u!114 &166669076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166669072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e27d36421284864fb5fe4923b8ca4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PP: 0
+  skillAttack: 0
+  critChance: 0
+  attackRange: 0
+  playerPos: {fileID: 166669079}
+--- !u!114 &166669077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166669072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68efc138c96055e46868de978c0963b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PP: 0
+  skillAttack: 0
+  critChance: 0
+  attackRange: 0
+  playerPos: {fileID: 166669079}
+--- !u!114 &166669078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166669072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ced06cfdd22164dad3ac8a59a1f668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeTile: {fileID: 0}
+--- !u!114 &166669079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166669072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a7297a7f285b647b7771331a63c1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  classDescription: 
+  life: 0
+  classAttack: 0
+  defense: 0
+  magie: 0
+  dodge: 0
+  movement: 0
+  skillList:
+  - {fileID: 166669077}
+  entityInRangeList: []
+  debuff: 0
+  isEnemy: 0
+  hasMoved: 0
+  hasAttacked: 0
+  _characterTileInfo: {fileID: 166669078}
+  _GameManager: {fileID: 1407704870}
 --- !u!1 &490648406
 GameObject:
   m_ObjectHideFlags: 0
