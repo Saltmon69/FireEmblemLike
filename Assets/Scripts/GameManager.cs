@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int enemyPlayedCounter;
     public int playerPlayedCounter;
 
+    public EntitiesPositions EntitiesPositions;
+
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerPlayedCounter == 4)
+        if (playerPlayedCounter == EntitiesPositions.playerPositions.Count)
         {
             enemyTurn = true;
             playerTurn = false;

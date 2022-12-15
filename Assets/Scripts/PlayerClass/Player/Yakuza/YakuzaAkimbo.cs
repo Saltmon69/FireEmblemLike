@@ -37,7 +37,7 @@ public class YakuzaAkimbo : SkillClass
         {
             foreach (var enemy in playerPos.entityInRangeList)
             {
-                playerPos.TakeDamage(skillUsed, enemy);
+                playerPos.TakeDamageForRicochet(skillUsed, enemy);
             }
         }
         

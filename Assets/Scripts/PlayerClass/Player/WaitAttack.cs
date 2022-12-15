@@ -3,25 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBaseAttack : SkillClass
+public class WaitAttack : SkillClass
 {
-    
     private void Start()
     {
-        PP = 999;
-        skillAttack = 0.5f;
-        critChance = 2;
-        attackRange = 2;
-
+        playerPos = GetComponent<PlayerClass>();
+        _mouseCursor = GetComponent<MouseCursor>();
     }
-    
+
     public override void Action()
     {
-
+        playerPos.hasAttacked = true;
     }
-
-
-    
-    
-    
 }

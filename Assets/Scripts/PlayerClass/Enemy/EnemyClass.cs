@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class EnemyClass : PlayerClass
 {
@@ -10,8 +12,14 @@ public class EnemyClass : PlayerClass
     public SkillClass attack;
     public EntitiesPositions playerList;
     public GameManager gameManager;
-    List<CharacterTileInfo> playersInRange = new List<CharacterTileInfo>();
-
+    
+    public List<GameObject> playersInRange = new List<GameObject>();
+    public List<OverlayTiles> pathfindingTiles = new List<OverlayTiles>();
+    public List<OverlayTiles> pathInRange = new List<OverlayTiles>();
+    public List<OverlayTiles> rangeList = new List<OverlayTiles>();
+    public List<OverlayTiles> tilesRange = new List<OverlayTiles>();
+    
+    
     private bool playerInRange;
     
     private void Start()
@@ -19,8 +27,10 @@ public class EnemyClass : PlayerClass
         //Scripts
         _RangeFinder = new RangeFinder();
         _PathFinder = new PathFinder();
-        _MouseCursor = new MouseCursor();
+        
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        _characterTileInfo = GetComponent<CharacterTileInfo>();
+        _MouseCursor = GameObject.Find("Cursor").GetComponent<MouseCursor>();
         
         
         // Texts
@@ -30,7 +40,7 @@ public class EnemyClass : PlayerClass
         //Stats
         
         life = 50f;
-        movement = 8;
+        movement = 3;
         dodge = 2f;
         classAttack = 20f;
         defense = 18f;
@@ -39,38 +49,56 @@ public class EnemyClass : PlayerClass
 
         attack = skillList[0];
         
-        playerToFocus = entityInRangeList[UnityEngine.Random.Range(0, entityInRangeList.Count -1)];
-        
         //States
         hasAttacked = false;
         hasMoved = false;
+        
+        
 
     }
 
     private void Update()
     {
         if (!playerToFocus.isActiveAndEnabled)
-            playerToFocus = entityInRangeList[UnityEngine.Random.Range(0, entityInRangeList.Count -1)];
+        {
+            Debug.Log("je cherche un ennemi");
+            playerToFocus = playerList.playerPositions[UnityEngine.Random.Range(0, playerList.playerPositions.Count + 1)].GetComponent<PlayerClass>();
+        }
+            
+            
+        
         
         if (gameManager.enemyTurn)
         {
-            CheckIfInAttackRange();
+            hasMoved = false;
+            hasAttacked = false;
+            if (_characterTileInfo != null)
+                CheckIfInAttackRange(_characterTileInfo.activeTile);
+
+           
             Debug.Log("Je viens de check si un player est dans la range");
             print(playerInRange);
             
             if (!playerInRange && !hasMoved)
             {
-                Movement();
+                Debug.Log("Je bouge");
+                
+                Movement(_characterTileInfo);
+                hasMoved = true;
             }
 
             if (playerInRange && !hasAttacked)
             {
+                
                 Attack();
+                Debug.Log("J'attaque");
+                hasAttacked = true;
             }
 
             if (!playerInRange && !hasMoved)
             {
-                hasAttacked = true;
+                hasAttacked = false;
+                hasMoved = false;
             }
         }
 
@@ -86,60 +114,60 @@ public class EnemyClass : PlayerClass
 
     private void Attack()
     {
-        TakeDamage(attack, playerToFocus);
+        print(TakeDamage(attack, playerToFocus));
     }
     
-    public void Movement()
+    public void Movement(CharacterTileInfo characterTileInfo)
     {
-        List<OverlayTiles> tilesRange = _RangeFinder.GetTilesInRange(_characterTileInfo.activeTile, movement);
-        List<OverlayTiles> pathfindingTiles =
-            _PathFinder.FindPath(_characterTileInfo.activeTile, playerToFocus._characterTileInfo.activeTile);
-        List<OverlayTiles> pathInRange = new List<OverlayTiles>();
+        tilesRange.Clear();
+        pathInRange.Clear();
+        _characterTileInfo = GetComponent<CharacterTileInfo>();
+        tilesRange = _RangeFinder.GetTilesInRange(characterTileInfo.activeTile, movement);
+        pathfindingTiles = _PathFinder.FindPath(characterTileInfo.activeTile, playerToFocus._characterTileInfo.activeTile);
+        
 
 
-        foreach (OverlayTiles tilesInGloblalPath in pathfindingTiles)
+        foreach (OverlayTiles tilesInGloblalPath in pathfindingTiles.ToArray())
         {
-            foreach (OverlayTiles tilesInRange in tilesRange)
+            foreach (OverlayTiles tilesInRange in tilesRange.ToArray())
             {
                 if (tilesInRange == tilesInGloblalPath)
                 {
                     pathInRange.Add(tilesInRange);
                 }
-                else
-                {
-                    tilesRange.Remove(tilesInRange);
-                }
             }
         }
+        
+        
+
+        
+        _MouseCursor.PositionCharacterOnTile(pathInRange[pathInRange.Count - 1], characterTileInfo);
         foreach (var tiles in pathInRange)
         {
             pathfindingTiles.Remove(tiles);
         }
         
-        _MouseCursor.MoveAlongPath(pathInRange, _characterTileInfo);
 
-        pathInRange.Clear();
         
+
+        
+
     }
 
-    public void CheckIfInAttackRange()
+    public void CheckIfInAttackRange(OverlayTiles characterTileInfo)
     {
-        List<OverlayTiles> rangeList = _RangeFinder.GetTilesInRange(_characterTileInfo.activeTile, attack.attackRange);
+        print(characterTileInfo);
 
-        foreach (var tilesInRange in rangeList)
+        
+        rangeList = _RangeFinder.GetTilesInRange(characterTileInfo, 2);
+
+        foreach (var tilesInRange in rangeList.ToArray())
         {
-            foreach (CharacterTileInfo playerPos in playerList.playerPositions)
+            if (tilesInRange.characterOnTile != null &&
+                !tilesInRange.characterOnTile.GetComponent<PlayerClass>().isEnemy)
             {
-                if (playerPos.activeTile == tilesInRange)
-                {
-                    playerInRange = true;
-                    playersInRange.Add(playerPos);
-                    break;
-                }
-                else
-                {
-                    playerInRange = false;
-                }
+                playersInRange.Add(tilesInRange.characterOnTile);
+                playerInRange = true;
             }
         }
     }

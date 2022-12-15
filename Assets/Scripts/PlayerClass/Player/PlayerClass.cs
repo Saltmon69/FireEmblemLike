@@ -12,7 +12,7 @@ public abstract class PlayerClass : MonoBehaviour
     
     //Variables statistiques
     
-    [HideInInspector] public float life;
+    public float life;
     [HideInInspector] public float classAttack;
     [HideInInspector] public float defense;
     [HideInInspector] public float magie;
@@ -56,7 +56,7 @@ public abstract class PlayerClass : MonoBehaviour
         var damage = skillUsed.skillAttack * crit - entitySelected.defense * 0.5f;
         var roundedDamage = Mathf.RoundToInt(damage);
 
-        entitySelected.life -= roundedDamage;
+        entitySelected.life = entitySelected.life + roundedDamage;
         
         return roundedDamage;
     }
@@ -71,7 +71,7 @@ public abstract class PlayerClass : MonoBehaviour
         damage = damage / 2;
         var roundedDamage = Mathf.RoundToInt(damage);
 
-        entitySelected.life -= roundedDamage;
+        entitySelected.life = entitySelected.life + roundedDamage;
         
         return roundedDamage;
     }

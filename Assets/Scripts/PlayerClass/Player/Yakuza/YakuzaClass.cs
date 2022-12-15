@@ -27,5 +27,10 @@ public class YakuzaClass : PlayerClass
         //Scripts
         _GameManager= GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
-    
+
+    private void Update()
+    {
+        if (hasAttacked)
+            _GameManager.playerPlayedCounter++;
+    }
 }

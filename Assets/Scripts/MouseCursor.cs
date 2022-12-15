@@ -209,7 +209,7 @@ public class MouseCursor : MonoBehaviour
           }
      }
 
-    private void PositionCharacterOnTile(OverlayTiles tile, CharacterTileInfo characterSelected)
+    public void PositionCharacterOnTile(OverlayTiles tile, CharacterTileInfo characterSelected)
     {
         print(tile.transform.position);
         characterSelected.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+1f, tile.transform.position.z);
