@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerClass> enemyList = new List<PlayerClass>();
 
+
     public int enemyPlayedCounter;
     public int playerPlayedCounter;
 
@@ -28,18 +29,28 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
+
+        
+    }
+
+    public void CheckIfPlayerTurnFinished() {
         if (playerPlayedCounter == EntitiesPositions.playerPositions.Count)
         {
-            enemyTurn = true;
             playerTurn = false;
+            enemyTurn = true;
             playerPlayedCounter = 0;
+            enemyPlayedCounter = 0;
         }
+    }
 
+    public void CheckIfEnemyTurnFinished() {
         if (enemyPlayedCounter == enemyList.Count)
         {
             playerTurn = true;
             enemyTurn = false;
             enemyPlayedCounter = 0;
+            playerPlayedCounter = 0;
         }
     }
 }

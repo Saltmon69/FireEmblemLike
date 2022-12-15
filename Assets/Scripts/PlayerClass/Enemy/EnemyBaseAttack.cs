@@ -11,7 +11,7 @@ public class EnemyBaseAttack : SkillClass
         PP = 999;
         skillAttack = 0.5f;
         critChance = 2;
-        attackRange = 2;
+        attackRange = 3;
 
     }
     

@@ -93,18 +93,23 @@ public class EnemyClass : PlayerClass
                 Attack();
                 Debug.Log("J'attaque");
                 hasAttacked = true;
+                _GameManager.CheckIfEnemyTurnFinished();
             }
 
             if (!playerInRange && !hasMoved)
             {
                 hasAttacked = false;
                 hasMoved = false;
+                
+            }
+
+            if (hasAttacked) {
+                hasMoved = true;
+                gameManager.enemyPlayedCounter++;
             }
         }
 
-        if (hasAttacked)
-            hasMoved = true;
-            gameManager.enemyPlayedCounter++;
+        
         
         
 
@@ -115,6 +120,7 @@ public class EnemyClass : PlayerClass
     private void Attack()
     {
         print(TakeDamage(attack, playerToFocus));
+
     }
     
     public void Movement(CharacterTileInfo characterTileInfo)
@@ -159,7 +165,7 @@ public class EnemyClass : PlayerClass
         print(characterTileInfo);
 
         
-        rangeList = _RangeFinder.GetTilesInRange(characterTileInfo, 2);
+        rangeList = _RangeFinder.GetTilesInRange(characterTileInfo, 3);
 
         foreach (var tilesInRange in rangeList.ToArray())
         {
@@ -168,6 +174,10 @@ public class EnemyClass : PlayerClass
             {
                 playersInRange.Add(tilesInRange.characterOnTile);
                 playerInRange = true;
+            }
+            else if (tilesInRange.characterOnTile == null){
+                playersInRange.Clear();
+                playerInRange = false;
             }
         }
     }

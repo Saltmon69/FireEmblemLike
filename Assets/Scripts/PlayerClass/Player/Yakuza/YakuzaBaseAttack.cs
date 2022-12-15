@@ -8,7 +8,7 @@ public class YakuzaBaseAttack : SkillClass
     private void Start()
     {
         PP = 999;
-        skillAttack = 075f;
+        skillAttack = 0.75f;
         attackRange = 2;
         critChance = 2;
         playerPos = GetComponent<PlayerClass>();

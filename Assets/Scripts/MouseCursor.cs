@@ -53,8 +53,8 @@ public class MouseCursor : MonoBehaviour
                     if (selectedSkill != null)
                     {
                         HidePreviousTiles();
-                        selectedEnemy.GetComponent<PlayerClass>().TakeDamage(selectedSkill, selectedCharacter.GetComponent<PlayerClass>());
-                        print( selectedEnemy.GetComponent<PlayerClass>().life);
+                        selectedSkill.Action();
+                        print(selectedEnemy.GetComponent<PlayerClass>().life);
                         selectedCharacter = null;
                         selectedSkill = null;
                     }
@@ -130,14 +130,20 @@ public class MouseCursor : MonoBehaviour
     {
         HidePreviousTiles();
 
-        if (selectedSkill.attackRange != 8)
+        if(selectedSkill != null)
         {
+            if (selectedSkill.attackRange != 8)
+            {
+                inRangeTiles = _rangefinder.GetTilesInRange(character.activeTile, range);
+            }
+            else
+            {
+                inRangeTiles = _rangefinder.GetTilesInLine(character.activeTile, 8);
+            }
+        } else {
             inRangeTiles = _rangefinder.GetTilesInRange(character.activeTile, range);
         }
-        else
-        {
-            inRangeTiles = _rangefinder.GetTilesInLine(character.activeTile, 8);
-        }
+        
 
         foreach (var item in inRangeTiles)
         {
@@ -220,12 +226,20 @@ public class MouseCursor : MonoBehaviour
 
     public void SelectAction(SkillClass action)
     {
+        if(action.attackRange == 0) {
+            action.Action();
+            selectedCharacter.transform.GetChild(0).gameObject.SetActive(false);
+            selectingAction = false;
+            return;
+        }
+
         HidePreviousTiles();
         selectedSkill = action;
         print(selectedSkill);
         GetInRangeTiles(selectedCharacter.GetComponent<CharacterTileInfo>(), selectedSkill.attackRange, true);
         selectedCharacter.transform.GetChild(0).gameObject.SetActive(false);
         selectingAction = false;
+
     }
 
     public void QuitSelectAction()

@@ -30,7 +30,8 @@ public class YakuzaClass : PlayerClass
 
     private void Update()
     {
-        if (hasAttacked)
-            _GameManager.playerPlayedCounter++;
+        
     }
+
+    
 }

@@ -86,4 +86,13 @@ public abstract class PlayerClass : MonoBehaviour
         return roundedHealValue;
     }
 
+    public void CheckFinishTurn() {
+        if (hasAttacked) 
+        {
+            _GameManager.playerPlayedCounter++;
+            _GameManager.CheckIfPlayerTurnFinished();
+            print("caca");
+        }
+    }
+
 }

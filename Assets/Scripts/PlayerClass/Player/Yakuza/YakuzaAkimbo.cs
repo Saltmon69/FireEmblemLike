@@ -13,7 +13,7 @@ public class YakuzaAkimbo : SkillClass
         attackRange = 3;
         critChance = 1;
         playerPos = GetComponent<PlayerClass>();
-        _mouseCursor = GetComponent<MouseCursor>();
+        _mouseCursor = GameObject.Find("Cursor").GetComponent<MouseCursor>();
 
         _rangeFinder = new RangeFinder();
 
@@ -26,24 +26,27 @@ public class YakuzaAkimbo : SkillClass
 
         foreach (var tiles in listForRicochet)
         {
-            if (tiles.characterOnTile.GetComponent<PlayerClass>() != null)
+            if (tiles.characterOnTile != null)
             {
                playerPos.entityInRangeList.Add(tiles.characterOnTile.GetComponent<PlayerClass>());
             }
         }
+
+        print(_mouseCursor.selectedEnemy);
 
         playerPos.TakeDamage(skillUsed, _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         if (playerPos.entityInRangeList.Count > 0)
         {
             foreach (var enemy in playerPos.entityInRangeList)
             {
-                playerPos.TakeDamageForRicochet(skillUsed, enemy);
+                print(playerPos.TakeDamageForRicochet(skillUsed, enemy));
             }
         }
         
         playerPos.entityInRangeList.Clear();
         
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
     
 }

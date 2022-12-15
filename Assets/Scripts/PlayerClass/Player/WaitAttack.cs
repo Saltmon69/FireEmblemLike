@@ -7,6 +7,7 @@ public class WaitAttack : SkillClass
 {
     private void Start()
     {
+        attackRange = 0;
         playerPos = GetComponent<PlayerClass>();
         _mouseCursor = GetComponent<MouseCursor>();
     }
@@ -14,5 +15,6 @@ public class WaitAttack : SkillClass
     public override void Action()
     {
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 }
