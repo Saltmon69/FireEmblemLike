@@ -171,9 +171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Skill 1
-
-'
+  m_text: Norito
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -442,7 +440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wait
+  m_text: Attendre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -631,7 +629,7 @@ MonoBehaviour:
   classDescription: "eune pr\xEAtresse shinto\xEFste, Miko a de puissantes capacit\xE9s
     d'exorcisme et de soins, faisant d'elle une alli\xE9e redoutable."
   life: 25
-  maxhealth: 0
+  maxhealth: 25
   classAttack: 0
   defense: 0
   magie: 0
@@ -852,7 +850,7 @@ MonoBehaviour:
         m_MethodName: SelectAction
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 6503043585306431360}
           m_ObjectArgumentAssemblyTypeName: SkillClass, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -925,7 +923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Base Attack
+  m_text: Attaque
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1121,7 +1119,7 @@ MonoBehaviour:
         m_MethodName: SelectAction
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1510705239045503480}
           m_ObjectArgumentAssemblyTypeName: SkillClass, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1255,7 +1253,7 @@ MonoBehaviour:
         m_MethodName: SelectAction
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 4515440960265240642}
           m_ObjectArgumentAssemblyTypeName: SkillClass, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1389,7 +1387,7 @@ MonoBehaviour:
         m_MethodName: SelectAction
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 4853654005650601315}
           m_ObjectArgumentAssemblyTypeName: SkillClass, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1597,7 +1595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill 2
+  m_text: Harae
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

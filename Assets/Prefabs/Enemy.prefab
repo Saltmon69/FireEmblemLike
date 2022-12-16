@@ -115,11 +115,16 @@ MonoBehaviour:
   className: Mailman
   classDescription: 
   life: 0
+  maxhealth: 0
   classAttack: 0
   defense: 0
   magie: 0
   dodge: 0
   movement: 0
+  oldLife: 0
+  shield: 0
+  poupee: 0
+  monstre: 0
   skillList:
   - {fileID: 6372037005589621168}
   entityInRangeList: []
@@ -127,6 +132,7 @@ MonoBehaviour:
   isEnemy: 1
   hasMoved: 0
   hasAttacked: 0
+  isDead: 0
   _characterTileInfo: {fileID: 6372037005589621170}
   _GameManager: {fileID: 0}
   _MouseCursor: {fileID: 0}
@@ -139,6 +145,7 @@ MonoBehaviour:
   pathInRange: []
   rangeList: []
   tilesRange: []
+  debuffcounter: 0
 --- !u!114 &6372037005589621168
 MonoBehaviour:
   m_ObjectHideFlags: 0

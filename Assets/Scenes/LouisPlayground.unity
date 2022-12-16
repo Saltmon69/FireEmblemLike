@@ -3523,42 +3523,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1802329986380767109, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
+    - target: {fileID: 1636766055890709275, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
         type: 3}
-      propertyPath: m_Camera
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 26617971}
+      objectReference: {fileID: 490648407}
     - target: {fileID: 1810839700651141092, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
         type: 3}
       propertyPath: m_Name
       value: Miko
       objectReference: {fileID: 0}
-    - target: {fileID: 2790624083525903651, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
+    - target: {fileID: 2970911170981338306, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 5167988504689260135, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 490648407}
-    - target: {fileID: 5950398972839597525, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
-        type: 3}
-      propertyPath: maxhealth
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 5950398972839597525, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
         type: 3}
       propertyPath: _GameManager
       value: 
       objectReference: {fileID: 1407704870}
-    - target: {fileID: 6575952284167919635, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
+    - target: {fileID: 6601546254744265758, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 8057848872592901855, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
+    - target: {fileID: 7720354386164772671, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490648407}
+    - target: {fileID: 8011067059766064372, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3682,47 +3677,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 321589094090602420, guid: 7847deaa3c82761438157067ea862432,
+    - target: {fileID: 877791951447679468, guid: 7847deaa3c82761438157067ea862432,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 1064723672522627601, guid: 7847deaa3c82761438157067ea862432,
+    - target: {fileID: 2414807851525637279, guid: 7847deaa3c82761438157067ea862432,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 3401633878594552151, guid: 7847deaa3c82761438157067ea862432,
+    - target: {fileID: 4249836535326214450, guid: 7847deaa3c82761438157067ea862432,
         type: 3}
-      propertyPath: m_Camera
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 26617971}
-    - target: {fileID: 4445321341062431523, guid: 7847deaa3c82761438157067ea862432,
-        type: 3}
-      propertyPath: oldLife
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445321341062431523, guid: 7847deaa3c82761438157067ea862432,
-        type: 3}
-      propertyPath: maxhealth
-      value: 50
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 490648407}
     - target: {fileID: 4445321341062431523, guid: 7847deaa3c82761438157067ea862432,
         type: 3}
       propertyPath: _GameManager
       value: 
       objectReference: {fileID: 1407704870}
-    - target: {fileID: 5162566550298339670, guid: 7847deaa3c82761438157067ea862432,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 490648407}
     - target: {fileID: 6813479429658360320, guid: 7847deaa3c82761438157067ea862432,
         type: 3}
       propertyPath: m_Name
       value: Yokai
       objectReference: {fileID: 0}
-    - target: {fileID: 7701017163383973526, guid: 7847deaa3c82761438157067ea862432,
+    - target: {fileID: 7327830284315323982, guid: 7847deaa3c82761438157067ea862432,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490648407}
+    - target: {fileID: 7335176184015605757, guid: 7847deaa3c82761438157067ea862432,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3748,6 +3733,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 684993392873595780, guid: 74208e15ead24534a897e704f566c9cb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490648407}
     - target: {fileID: 762064454969380172, guid: 74208e15ead24534a897e704f566c9cb,
         type: 3}
       propertyPath: m_RootOrder
@@ -3803,11 +3793,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3565935410951735890, guid: 74208e15ead24534a897e704f566c9cb,
+    - target: {fileID: 1013131708982978421, guid: 74208e15ead24534a897e704f566c9cb,
         type: 3}
-      propertyPath: maxhealth
-      value: 25
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490648407}
+    - target: {fileID: 2529891265736920246, guid: 74208e15ead24534a897e704f566c9cb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490648407}
     - target: {fileID: 3565935410951735890, guid: 74208e15ead24534a897e704f566c9cb,
         type: 3}
       propertyPath: _GameManager
@@ -3818,31 +3813,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitokiri
       objectReference: {fileID: 0}
-    - target: {fileID: 4214269588233639875, guid: 74208e15ead24534a897e704f566c9cb,
+    - target: {fileID: 4483263676591561577, guid: 74208e15ead24534a897e704f566c9cb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 4985032310638337203, guid: 74208e15ead24534a897e704f566c9cb,
+    - target: {fileID: 7389605544733161948, guid: 74208e15ead24534a897e704f566c9cb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 7496522455797310371, guid: 74208e15ead24534a897e704f566c9cb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 490648407}
-    - target: {fileID: 7568747711592956634, guid: 74208e15ead24534a897e704f566c9cb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 490648407}
-    - target: {fileID: 8865768660308538412, guid: 74208e15ead24534a897e704f566c9cb,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 26617971}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74208e15ead24534a897e704f566c9cb, type: 3}
 --- !u!1001 &4468948156727686424
@@ -3862,11 +3842,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 490648407}
-    - target: {fileID: 4036265227267950172, guid: c585ffb09dc91724aa62ac2f7b780419,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4369227803682855928, guid: c585ffb09dc91724aa62ac2f7b780419,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3949,14 +3924,14 @@ PrefabInstance:
       objectReference: {fileID: 490648407}
     - target: {fileID: 4468948156579372559, guid: c585ffb09dc91724aa62ac2f7b780419,
         type: 3}
-      propertyPath: maxhealth
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468948156579372559, guid: c585ffb09dc91724aa62ac2f7b780419,
-        type: 3}
       propertyPath: _GameManager
       value: 
       objectReference: {fileID: 1407704870}
+    - target: {fileID: 5163115020371932650, guid: c585ffb09dc91724aa62ac2f7b780419,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490648407}
     - target: {fileID: 6099637462968040116, guid: c585ffb09dc91724aa62ac2f7b780419,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

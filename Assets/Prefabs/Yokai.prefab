@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wait
+  m_text: Attendre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Base Attack
+  m_text: Attaque
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill 2
+  m_text: Marteau
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1303,13 +1303,13 @@ MonoBehaviour:
     Quand la comp\xE9tence Bouclier d'ombre est utilis\xE9e, Y\u014Dkai passe dans
     cette forme, perdant la possibilit\xE9 de bouger et d'utiliser la moindre capacit\xE9."
   life: 0
-  maxhealth: 0
+  maxhealth: 50
   classAttack: 0
   defense: 0
   magie: 0
   dodge: 0
   movement: 0
-  oldLife: 0
+  oldLife: 50
   shield: 0
   poupee: 0
   monstre: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Skill 1
+  m_text: 'Bouclier
 
 '
   m_isRightToLeft: 0
