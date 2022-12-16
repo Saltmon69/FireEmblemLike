@@ -10,12 +10,14 @@ public class HealthBar : MonoBehaviour
     public Image healthBar;
     public PlayerClass playerHealth;
 
-    public TextMeshProUGUI textMesh;
-
+    public TextMeshProUGUI name;
+    public TextMeshProUGUI pv;
 
     private void Update()
     {
-        textMesh.SetText(playerHealth.className);
+        var value = playerHealth.maxhealth / playerHealth.life;
+        pv.SetText("PV: " + playerHealth.life.ToString());
+        name.SetText(playerHealth.className);
         healthBar.fillAmount = playerHealth.maxhealth / playerHealth.life;
     }
 }

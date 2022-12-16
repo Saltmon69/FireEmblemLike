@@ -57,7 +57,7 @@ public class EnemyClass : PlayerClass
     }
     private void Update()
     {
-        Debug.Log("C'est le tour de l'ennemi");
+        
         if (!playerToFocus.isActiveAndEnabled)
         {
             Debug.Log("je cherche un ennemi");
@@ -66,6 +66,7 @@ public class EnemyClass : PlayerClass
         
         if (gameManager.enemyTurn)
         {
+            Debug.Log("C'est le tour de l'ennemi");
             if (debuffcounter >= 2)
             {
                 debuff = false;
