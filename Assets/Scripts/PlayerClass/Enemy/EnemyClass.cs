@@ -191,4 +191,9 @@ public class EnemyClass : PlayerClass
         character.activeTile = newTile;
         newTile.characterOnTile = character.gameObject;
     }
+
+    /*public void CallNextTurn()
+    {
+        _GameManager.CheckIfEnemyTurnFinished();
+    }*/
 }

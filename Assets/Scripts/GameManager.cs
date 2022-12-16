@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void CheckIfPlayerTurnFinished() {
+    public void CheckIfPlayerTurnFinished() 
+    {
         if (playerPlayedCounter == EntitiesPositions.playerPositions.Count)
         {
             Debug.Log("Tour ennemis");
@@ -45,7 +46,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckIfEnemyTurnFinished() {
+    public void CheckIfEnemyTurnFinished() 
+    {
         if (enemyPlayedCounter == enemyList.Count)
         {
             Debug.Log("Tour joueur");
@@ -53,7 +55,6 @@ public class GameManager : MonoBehaviour
             enemyTurn = false;
             enemyPlayedCounter = 0;
             playerPlayedCounter = 0;
-
         }
     }
 }
