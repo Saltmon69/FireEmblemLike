@@ -53,21 +53,15 @@ public class EnemyClass : PlayerClass
         //States
         hasAttacked = false;
         hasMoved = false;
-        
-        
 
     }
-
     private void Update()
     {
         if (!playerToFocus.isActiveAndEnabled)
         {
             Debug.Log("je cherche un ennemi");
             playerToFocus = playerList.playerPositions[UnityEngine.Random.Range(0, playerList.playerPositions.Count + 1)].GetComponent<PlayerClass>();
-        }
-            
-            
-        
+        }  
         
         if (gameManager.enemyTurn)
         {
@@ -128,20 +122,12 @@ public class EnemyClass : PlayerClass
             }
         }
 
-        
-        
-        
-
-
     }
-
-
     private void Attack()
     {
         print(TakeDamage(attack, playerToFocus));
 
     }
-    
     public void Movement(CharacterTileInfo characterTileInfo)
     {
         tilesRange.Clear();
@@ -163,20 +149,21 @@ public class EnemyClass : PlayerClass
             }
         }
 
-        PositionCharacterOnTile(pathInRange[pathInRange.Count - 1], _characterTileInfo);
+        if(pathInRange[pathInRange.Count-1].characterOnTile == null) 
+        {
+            PositionCharacterOnTile(pathInRange[pathInRange.Count - 1], _characterTileInfo);
+        }
+        else
+        {
+            PositionCharacterOnTile(pathInRange[pathInRange.Count - 2], _characterTileInfo);
+        }
 
         foreach (var tiles in pathInRange)
         {
             pathfindingTiles.Remove(tiles);
         }
         
-
-        
-
-        
-
     }
-
     public void CheckIfInAttackRange(OverlayTiles characterTileInfo)
     {
         print(characterTileInfo);
@@ -203,7 +190,6 @@ public class EnemyClass : PlayerClass
             playerInRange = false;
         }
     }
-
     public void PositionCharacterOnTile(OverlayTiles newTile, CharacterTileInfo character)
     {
         character.transform.position = new Vector3(newTile.transform.position.x, newTile.transform.position.y+1f, newTile.transform.position.z);

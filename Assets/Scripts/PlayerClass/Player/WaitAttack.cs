@@ -9,11 +9,12 @@ public class WaitAttack : SkillClass
     {
         attackRange = 0;
         playerPos = GetComponent<PlayerClass>();
-        _mouseCursor = GetComponent<MouseCursor>();
+        _mouseCursor = GameObject.Find("Cursor").GetComponent<MouseCursor>();
     }
 
     public override void Action()
     {
+        _mouseCursor.HidePreviousTiles();
         playerPos.hasAttacked = true;
         playerPos.CheckFinishTurn();
     }

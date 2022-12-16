@@ -35,6 +35,7 @@ public abstract class PlayerClass : MonoBehaviour
     public bool isEnemy;
     public bool hasMoved;
     public bool hasAttacked;
+    public bool isDead = false;
     
     //Variables range
     
@@ -42,14 +43,7 @@ public abstract class PlayerClass : MonoBehaviour
     public RangeFinder _RangeFinder;
     public PathFinder _PathFinder;
     public GameManager _GameManager;
-    
-    
-    
-    
-    
-    
 
-    
 
     public int TakeDamage(SkillClass skillUsed, PlayerClass entitySelected)
     {

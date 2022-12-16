@@ -19,5 +19,6 @@ public class YakuzaBaseAttack : SkillClass
     {
         playerPos.TakeDamage(GetComponent<SkillClass>(), _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 }

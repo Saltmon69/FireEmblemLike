@@ -51,6 +51,13 @@ public class GameManager : MonoBehaviour
             enemyTurn = false;
             enemyPlayedCounter = 0;
             playerPlayedCounter = 0;
+
+            for(var i = 0; i < EntitiesPositions.playerPositions.Count; i++)
+            {
+                EntitiesPositions.playerPositions[i].GetComponent<PlayerClass>().hasAttacked = false;
+                EntitiesPositions.playerPositions[i].GetComponent<PlayerClass>().hasMoved = false;
+            }
+
         }
     }
 }

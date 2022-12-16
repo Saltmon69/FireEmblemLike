@@ -18,7 +18,7 @@ public class MouseCursor : MonoBehaviour
 
     private PathFinder _pathfinder;
     private RangeFinder _rangefinder;
-
+    private GameManager _gameManager;
 
     private bool selectingAction = false;
     public SkillClass selectedSkill;
@@ -28,11 +28,14 @@ public class MouseCursor : MonoBehaviour
     {
         _pathfinder = new PathFinder();
         _rangefinder = new RangeFinder();
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_gameManager.enemyTurn) return;
+
         var focusedTileHit = GetFocusedOnTile();
         
         if (focusedTileHit.HasValue)
@@ -68,27 +71,24 @@ public class MouseCursor : MonoBehaviour
                 
                 // Moving Character Part ↓
                 
-                if (takedCharacter == null && hoveredTile.characterOnTile != null)
+                if (takedCharacter == null && hoveredTile.characterOnTile != null && !hoveredTile.characterOnTile.GetComponent<PlayerClass>().hasMoved)
                 {
                     print("character clicked");
                     takedCharacter = hoveredTile.characterOnTile;
                     previousTile = hoveredTile;
                     hoveredTile.characterOnTile = null;
-                    GetInRangeTiles(takedCharacter.GetComponent<CharacterTileInfo>(), 3);
+                    GetInRangeTiles(takedCharacter.GetComponent<CharacterTileInfo>(), takedCharacter.GetComponent<PlayerClass>().movement);
                     takedCharacter.GetComponent<CharacterTileInfo>().activeTile = null;
                 }
-                else
+                else if(takedCharacter != null && hoveredTile.characterOnTile == null)
                 {
                     // Check if tile is in range
-                    if(!CheckInRangeTiles(hoveredTile,previousTile, 3)) return;
+                    if(!CheckInRangeTiles(hoveredTile,previousTile, takedCharacter.GetComponent<PlayerClass>().movement)) return;
                         
                     // Place Selected Character on clicked tile
-                    if (hoveredTile.characterOnTile == null && !hoveredTile.isBlocked && takedCharacter != null)
-                    {
-                        PositionCharacterOnTile(hoveredTile, takedCharacter.GetComponent<CharacterTileInfo>());
-                        HidePreviousTiles();
-                        takedCharacter = null;
-                    }
+                    PositionCharacterOnTile(hoveredTile, takedCharacter.GetComponent<CharacterTileInfo>());
+                    HidePreviousTiles();
+                    takedCharacter = null;
                         
                 }
 
@@ -179,7 +179,7 @@ public class MouseCursor : MonoBehaviour
         return false;
     }
 
-    private void HidePreviousTiles()
+    public void HidePreviousTiles()
     {
         foreach (var item in inRangeTiles)
         {
@@ -200,29 +200,14 @@ public class MouseCursor : MonoBehaviour
         return null;
     }
 
-    public void MoveAlongPath(List<OverlayTiles> path, CharacterTileInfo characterSelected)
-      {
-          var step = speed * Time.deltaTime;
-     
-          var yIndex = path[0].transform.position.y;
-          characterSelected.transform.position = Vector2.MoveTowards(characterSelected.transform.position, path[0].transform.position, step);
-          characterSelected.transform.position =
-             new Vector3(characterSelected.transform.position.x, yIndex, characterSelected.transform.position.y);
-          if (Vector2.Distance(characterSelected.transform.position, path[0].transform.position) < 0.0001f)
-          {
-              PositionCharacterOnTile(path[0], characterSelected);
-              path.RemoveAt(0);
-          }
-     }
-
     public void PositionCharacterOnTile(OverlayTiles tile, CharacterTileInfo characterSelected)
     {
         print(tile.transform.position);
         characterSelected.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+1f, tile.transform.position.z);
         characterSelected.GetComponentInChildren<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
-        characterSelected.activeTile.characterOnTile = null;
         characterSelected.activeTile = tile;
         tile.characterOnTile = characterSelected.gameObject;
+        characterSelected.GetComponent<PlayerClass>().hasMoved = true;
     }
 
     public void SelectAction(SkillClass action)
