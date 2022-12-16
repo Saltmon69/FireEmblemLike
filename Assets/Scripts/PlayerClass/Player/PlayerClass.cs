@@ -18,6 +18,10 @@ public abstract class PlayerClass : MonoBehaviour
     [HideInInspector] public float magie;
     [HideInInspector] public float dodge;
     [HideInInspector] public int movement;
+    public float oldLife;
+    public int shield;
+    public bool poupee;
+    public bool monstre;
     
     //Variables compétences
 
