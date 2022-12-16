@@ -30,7 +30,7 @@ public class MikoHaraeAttack : SkillClass
         }
 
         playerPos.hasAttacked = true;
-
+        playerPos.CheckFinishTurn();
     }
     
 }

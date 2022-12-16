@@ -19,6 +19,7 @@ public class HitokiriBaseAttack : SkillClass
     {
         playerPos.TakeDamage(_mouseCursor.selectedSkill, _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 
 

@@ -60,10 +60,6 @@ public class MouseCursor : MonoBehaviour
                         selectedCharacter = null;
                         selectedSkill = null;
                     }
-                    else
-                    {
-                        return;
-                    }
                     return;   
                 }
                 
@@ -88,7 +84,12 @@ public class MouseCursor : MonoBehaviour
                     PositionCharacterOnTile(hoveredTile, takedCharacter.GetComponent<CharacterTileInfo>());
                     HidePreviousTiles();
                     takedCharacter = null;
-                        
+
+                    selectedCharacter = null;
+                    selectedSkill = null;
+                    hoveredTile.characterOnTile.transform.GetChild(0).gameObject.SetActive(true);
+                    selectingAction = true;
+                    selectedCharacter = hoveredTile.characterOnTile;
                 }
 
             }

@@ -25,7 +25,7 @@ public class YokaiMarteauAttack : SkillClass
 
             foreach (var tiles in tilesInRange.ToArray())
             {
-                if (tiles.characterOnTile.GetComponent<PlayerClass>())
+                if (tiles.characterOnTile != null)
                 {
                     var ennemis = tiles.characterOnTile.GetComponent<PlayerClass>();
 
@@ -36,6 +36,7 @@ public class YokaiMarteauAttack : SkillClass
         }
         
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 
     

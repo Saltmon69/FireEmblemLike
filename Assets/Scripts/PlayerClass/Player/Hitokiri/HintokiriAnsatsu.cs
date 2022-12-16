@@ -24,5 +24,6 @@ public class HintokiriAnsatsu : SkillClass
         }
             
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 }

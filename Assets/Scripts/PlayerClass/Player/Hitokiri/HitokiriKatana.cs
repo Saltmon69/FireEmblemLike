@@ -24,5 +24,6 @@ public class HitokiriKatana : SkillClass
         }
             
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 }

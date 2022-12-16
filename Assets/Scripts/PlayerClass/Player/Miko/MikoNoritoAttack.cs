@@ -20,5 +20,6 @@ public class MikoNoritoAttack : SkillClass
         if (PP >= 1)
             playerPos.Heal(_mouseCursor.selectedSkill);
         playerPos.hasAttacked = true;
+        playerPos.CheckFinishTurn();
     }
 }

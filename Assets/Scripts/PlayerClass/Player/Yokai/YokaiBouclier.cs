@@ -31,6 +31,7 @@ public class YokaiBouclier : SkillClass
                 playerPos.oldLife = playerPos.life;
                 playerPos.life = 30f;
                 playerPos.hasAttacked = true;
+                playerPos.CheckFinishTurn();
             }
 
         }
