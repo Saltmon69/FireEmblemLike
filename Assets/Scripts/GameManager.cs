@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -29,7 +31,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetButtonUp(KeyCode.Escape.ToString()))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetButtonUp(KeyCode.R.ToString()))
+        {
+            SceneManager.LoadScene("TheoPlaygroundScene");
+        }
 
         
     }
