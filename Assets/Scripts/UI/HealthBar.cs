@@ -10,12 +10,12 @@ public class HealthBar : MonoBehaviour
     public Image healthBar;
     public PlayerClass playerHealth;
 
-    public TextMesh textMesh;
+    public TextMeshProUGUI textMesh;
 
 
     private void Update()
     {
-        textMesh.text = playerHealth.className;
+        textMesh.SetText(playerHealth.className);
         healthBar.fillAmount = playerHealth.maxhealth / playerHealth.life;
     }
 }
