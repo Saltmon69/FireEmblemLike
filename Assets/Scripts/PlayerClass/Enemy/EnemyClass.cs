@@ -57,6 +57,7 @@ public class EnemyClass : PlayerClass
     }
     private void Update()
     {
+        Debug.Log("C'est le tour de l'ennemi");
         if (!playerToFocus.isActiveAndEnabled)
         {
             Debug.Log("je cherche un ennemi");

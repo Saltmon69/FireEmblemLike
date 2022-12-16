@@ -19,5 +19,6 @@ public class YokaiBaseAttack : SkillClass
     {
         playerPos.TakeDamage(_mouseCursor.selectedSkill, _mouseCursor.selectedEnemy.GetComponent<PlayerClass>());
         playerPos.hasAttacked = true;
+        playerPos._GameManager.playerPlayedCounter++;
     }
 }

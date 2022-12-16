@@ -45,21 +45,21 @@ public class YokaiClass : PlayerClass
     
     void Update()
     {
-        if (poupee && life <= 0)
-        {
-            monstre = true;
-            turnCounter = 0;
-        }
         if (hasAttacked)
         {
             if (poupee)
             {
                 turnCounter++;
             }
-            _GameManager.playerPlayedCounter++;
-        }
             
+        }
         
+        if (poupee && life <= 0)
+        {
+            monstre = true;
+            turnCounter = 0;
+        }
+
         if (turnCounter == 2)
         {
             monstre = true;

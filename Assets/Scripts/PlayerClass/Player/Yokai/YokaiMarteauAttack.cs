@@ -36,6 +36,7 @@ public class YokaiMarteauAttack : SkillClass
         }
         
         playerPos.hasAttacked = true;
+        playerPos._GameManager.playerPlayedCounter++;
         playerPos.CheckFinishTurn();
     }
 

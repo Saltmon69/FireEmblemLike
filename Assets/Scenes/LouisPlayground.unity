@@ -2655,8 +2655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d049047e7871e0a4ebd8ea253b124967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTurn: 1
-  enemyTurn: 0
+  playerTurn: 0
+  enemyTurn: 1
   enemyList:
   - {fileID: 1945151217}
   enemyPlayedCounter: 0
