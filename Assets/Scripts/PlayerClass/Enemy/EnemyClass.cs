@@ -180,14 +180,17 @@ public class EnemyClass : PlayerClass
             }
             
         }
-        
-        if(playersInRange.Count > 0)
+
+        foreach (var players in playersInRange)
         {
-            playerInRange = true;
-        }
-        else
-        {
-            playerInRange = false;
+            if (players == playerToFocus)
+            {
+                playerInRange = true;
+            }
+            else
+            {
+                playerInRange = false;
+            }
         }
     }
     public void PositionCharacterOnTile(OverlayTiles newTile, CharacterTileInfo character)
