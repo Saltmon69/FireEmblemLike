@@ -19,7 +19,8 @@ public class EnemyClass : PlayerClass
     public List<OverlayTiles> rangeList = new List<OverlayTiles>();
     public List<OverlayTiles> tilesRange = new List<OverlayTiles>();
     
-    
+    public int debuffcounter;
+
     private bool playerInRange;
     
     private void Start()
@@ -70,6 +71,15 @@ public class EnemyClass : PlayerClass
         
         if (gameManager.enemyTurn)
         {
+            if (debuffcounter >= 2)
+            {
+                debuff = false;
+                debuffcounter = 0;
+            }
+            if (debuff)
+            {
+                debuffcounter++;
+            }
             hasMoved = false;
             hasAttacked = false;
             if (_characterTileInfo != null)
@@ -82,7 +92,6 @@ public class EnemyClass : PlayerClass
             if (!playerInRange && !hasMoved)
             {
                 Debug.Log("Je bouge");
-                
                 Movement(_characterTileInfo);
                 hasMoved = true;
             }
@@ -90,9 +99,19 @@ public class EnemyClass : PlayerClass
             if (playerInRange && !hasAttacked)
             {
                 
-                Attack();
-                Debug.Log("J'attaque");
-                hasAttacked = true;
+                var dodgedice = UnityEngine.Random.Range(1, 7);
+                if (playerToFocus.dodge >= dodgedice)
+                {
+                    Debug.Log("Le Joueur a esquivé");
+                    hasAttacked = true;
+                }
+
+                if (playerToFocus.dodge < dodgedice)
+                {
+                    Attack();
+                    Debug.Log("J'attaque");
+                    hasAttacked = true;
+                }
                 _GameManager.CheckIfEnemyTurnFinished();
             }
 
@@ -143,11 +162,9 @@ public class EnemyClass : PlayerClass
                 }
             }
         }
-        
-        
 
-        
-        _MouseCursor.PositionCharacterOnTile(pathInRange[pathInRange.Count - 1], characterTileInfo);
+        PositionCharacterOnTile(pathInRange[pathInRange.Count - 1], _characterTileInfo);
+
         foreach (var tiles in pathInRange)
         {
             pathfindingTiles.Remove(tiles);
@@ -163,7 +180,7 @@ public class EnemyClass : PlayerClass
     public void CheckIfInAttackRange(OverlayTiles characterTileInfo)
     {
         print(characterTileInfo);
-
+        playersInRange.Clear();
         
         rangeList = _RangeFinder.GetTilesInRange(characterTileInfo, 3);
 
@@ -173,13 +190,26 @@ public class EnemyClass : PlayerClass
                 !tilesInRange.characterOnTile.GetComponent<PlayerClass>().isEnemy)
             {
                 playersInRange.Add(tilesInRange.characterOnTile);
-                playerInRange = true;
             }
-            else if (tilesInRange.characterOnTile == null){
-                playersInRange.Clear();
-                playerInRange = false;
-            }
+            
+        }
+        
+        if(playersInRange.Count > 0)
+        {
+            playerInRange = true;
+        }
+        else
+        {
+            playerInRange = false;
         }
     }
 
+    public void PositionCharacterOnTile(OverlayTiles newTile, CharacterTileInfo character)
+    {
+        character.transform.position = new Vector3(newTile.transform.position.x, newTile.transform.position.y+1f, newTile.transform.position.z);
+        character.GetComponentInChildren<SpriteRenderer>().sortingOrder = newTile.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        character.activeTile.characterOnTile = null;
+        character.activeTile = newTile;
+        newTile.characterOnTile = character.gameObject;
+    }
 }

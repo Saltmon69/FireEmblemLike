@@ -12,7 +12,7 @@ public class YakuzaTelurique : SkillClass
         attackRange = 8;
         critChance = 1;
         playerPos = GetComponent<PlayerClass>();
-        _mouseCursor = GetComponent<MouseCursor>();
+        _mouseCursor = GameObject.Find("Cursor").GetComponent<MouseCursor>();
     }
     public override void Action()
     {

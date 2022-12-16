@@ -12,7 +12,7 @@ public class YakuzaBaseAttack : SkillClass
         attackRange = 2;
         critChance = 2;
         playerPos = GetComponent<PlayerClass>();
-        _mouseCursor = GetComponent<MouseCursor>();
+        _mouseCursor = GameObject.Find("Cursor").GetComponent<MouseCursor>();
     }
     
     public override void Action()
