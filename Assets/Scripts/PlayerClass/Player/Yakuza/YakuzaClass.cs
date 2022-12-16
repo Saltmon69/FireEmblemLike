@@ -21,7 +21,7 @@ public class YakuzaClass : PlayerClass
         defense = 12f;
         magie = 10f;
         dodge = 2f;
-        movement = 6;
+        movement = 3;
         isEnemy = false;
 
         //Scripts

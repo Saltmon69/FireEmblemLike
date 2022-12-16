@@ -18,7 +18,7 @@ public abstract class PlayerClass : MonoBehaviour
     [HideInInspector] public float defense;
     [HideInInspector] public float magie;
     [HideInInspector] public float dodge;
-    [HideInInspector] public int movement;
+    [HideInInspector] public int movement = 4;
     public float oldLife;
     public int shield;
     public bool poupee;
@@ -90,6 +90,8 @@ public abstract class PlayerClass : MonoBehaviour
         {
             _GameManager.playerPlayedCounter++;
             _GameManager.CheckIfPlayerTurnFinished();
+            hasMoved = false;
+            hasAttacked = false;
             print("caca");
         }
     }

@@ -46,7 +46,6 @@ public class MouseCursor : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-               
                 if(selectingAction) return;
                 
                 // If Player using skill

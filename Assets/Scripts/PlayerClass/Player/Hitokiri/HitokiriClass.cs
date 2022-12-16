@@ -14,7 +14,7 @@ public class HitokiriClass : PlayerClass
         classAttack = 25;
         defense = 10;
         dodge = 3;
-        movement = 8;
+        movement = 5;
     }
 
     // Update is called once per frame

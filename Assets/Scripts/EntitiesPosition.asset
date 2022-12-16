@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPositions:
   - {fileID: 4468948156579372552, guid: c585ffb09dc91724aa62ac2f7b780419, type: 3}
+  - {fileID: 1810839700651141092, guid: 1d70e7c1ddb9b9b49a1ef795f48de7f9, type: 3}
+  - {fileID: 3863042255849879493, guid: 74208e15ead24534a897e704f566c9cb, type: 3}
+  - {fileID: 6813479429658360320, guid: 7847deaa3c82761438157067ea862432, type: 3}

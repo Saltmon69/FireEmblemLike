@@ -37,7 +37,6 @@ public class CharacterTileInfo : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            print("hello");
             return hits.OrderByDescending(i => i.collider.transform.position.z).First();
         }
         return null;

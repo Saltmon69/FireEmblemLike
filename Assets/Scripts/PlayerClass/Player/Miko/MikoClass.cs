@@ -15,7 +15,7 @@ public class MikoClass : PlayerClass
         classAttack = magie;
         defense = 8;
         dodge = 1;
-        movement = 8;
+        movement = 4;
     }
 
     private void Update()
