@@ -109,13 +109,6 @@ public class EnemyClass : PlayerClass
                 _GameManager.CheckIfEnemyTurnFinished();
             }
 
-            if (!playerInRange && !hasMoved)
-            {
-                hasAttacked = false;
-                hasMoved = false;
-                
-            }
-
             if (hasAttacked) {
                 hasMoved = true;
                 gameManager.enemyPlayedCounter++;
@@ -152,11 +145,10 @@ public class EnemyClass : PlayerClass
         if(pathInRange[pathInRange.Count-1].characterOnTile == null) 
         {
             PositionCharacterOnTile(pathInRange[pathInRange.Count - 1], _characterTileInfo);
-        }
-        else
-        {
+        } else {
             PositionCharacterOnTile(pathInRange[pathInRange.Count - 2], _characterTileInfo);
         }
+        
 
         foreach (var tiles in pathInRange)
         {
@@ -181,16 +173,12 @@ public class EnemyClass : PlayerClass
             
         }
 
-        foreach (var players in playersInRange)
+        if(playersInRange.Count > 0) 
         {
-            if (players == playerToFocus)
-            {
-                playerInRange = true;
-            }
-            else
-            {
-                playerInRange = false;
-            }
+            playerInRange = true;
+            playerToFocus = playersInRange[0].GetComponent<PlayerClass>();
+        } else {
+            playerInRange = false;
         }
     }
     public void PositionCharacterOnTile(OverlayTiles newTile, CharacterTileInfo character)

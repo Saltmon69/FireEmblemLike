@@ -92,7 +92,6 @@ public abstract class PlayerClass : MonoBehaviour
             _GameManager.CheckIfPlayerTurnFinished();
             hasMoved = false;
             hasAttacked = false;
-            print("caca");
         }
     }
 
