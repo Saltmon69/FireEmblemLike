@@ -13,6 +13,7 @@ public abstract class PlayerClass : MonoBehaviour
     //Variables statistiques
     
     public float life;
+    public float maxhealth;
     [HideInInspector] public float classAttack;
     [HideInInspector] public float defense;
     [HideInInspector] public float magie;

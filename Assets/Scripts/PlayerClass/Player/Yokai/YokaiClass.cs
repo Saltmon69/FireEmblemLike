@@ -13,7 +13,7 @@ public class YokaiClass : PlayerClass
     {
         _GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         _characterTileInfo = GetComponent<CharacterTileInfo>();
-
+        maxhealth = 50;
         monstre = true;
         oldLife = 50;
         

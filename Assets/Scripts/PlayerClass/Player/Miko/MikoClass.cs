@@ -10,6 +10,7 @@ public class MikoClass : PlayerClass
     {
         _GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         _characterTileInfo = GetComponent<CharacterTileInfo>();
+        maxhealth = 25;
         magie = 20;
         classAttack = magie;
         defense = 8;

@@ -15,7 +15,7 @@ public class YakuzaClass : PlayerClass
             "L'un des plus puissants chefs de gang, sa peur et sa haine pour les Corrompus l'a poussé à rejoindre vos rangs.";
         
         //Stats
-        
+        maxhealth = 35;
         life = 35f;
         classAttack = 20f;
         defense = 12f;
